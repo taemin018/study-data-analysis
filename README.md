@@ -15,7 +15,8 @@ Data Analysis (데이터 분석)
 
     - 자료의 수치를 변량이라고 하며, 데이터의 값을 의미한다.
 
-# !pip install numpy pandas
+ !pip install numpy pandas
+
     - numpy ,pandas 설치
 
     Numpy: 수치계산과 배열 연산에 특화된 라이브러리 -> import numpy as np
