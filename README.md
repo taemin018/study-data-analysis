@@ -1,10 +1,10 @@
-#### 기초통계(Basic statistics)
+## 기초통계(Basic statistics)
 
     - 통계는 아직 발생하지 않은 일을 예측하기 위해서 사용한다.
     - 수량적인 비교를 기초로 많은 사실을 관찰하고 처리하는 방법을 연구하는 학문이다.
     - 불균형 데이터를 대상으로 규칙성과 불규칙성을 발견한 뒤 실생활에 적용할 수 있다.
 
-## Data Analysis (데이터 분석)
+Data Analysis (데이터 분석)
 
 <img width="915" height="373" alt="스크린샷 2025-11-12 오후 7 32 06" src="https://github.com/user-attachments/assets/314e24a7-0df9-46f3-9736-a29e915fd6de" />
 
