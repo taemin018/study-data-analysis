@@ -349,18 +349,113 @@ describe()
     GDP가 높은 국가들(1.8 이상)은 대부분 행복 점수가 7점 이상이다.
     그래프가 우상향하는 것을 보면 경제 수준이 높은 나라일수록 국민들의 행복감이 높게 나타난다.
 
+#### RFM 분석
 
+    - 사용자 별로 얼마나 최근에, 얼마나 자주, 얼마나 많은 금액을 지출했는지에 따라 사용자들의 분포를 확인하거나 사용자 그룹(또는 등급)을 나누어 분류하는 분석 기법이다.
+    - 구매 가능성이 높은 고객을 선정할 때 용이한 데이터 분석 방법이며, 사용자들의 평소 구매 패턴을 기준으로 분류를 진행하기 때문에 각 사용자 그룹의 특성에 따라 차별화된 마케팅 메시지를 전달 할 수 있다.
+    
+    - Recency : 얼마나 최근에 구매 했는가
+    - Frequency: 얼마나 자주 구매했는가
+    - Monetary: 얼마나 많은 금액을 지출했는가
 
+데이터 정보 확인
 
+    - info()
 
+duplicated().sum()
 
+    - 데이터프레임에서 중복된 행의 갯수
 
+isna().sum()
 
+    - null값의 개수 확인
 
+describe().T
 
+    - 통계를 컬럼기준으로 정리
 
+정상치 범위 구하기 
 
+    import numpy as np
+    
+    Q1 = cp_df.describe().T.loc['Income', '25%']
+    Q3 = cp_df.describe().T.loc['Income', '75%']
+    
+    iqr = Q3 - Q1
+    
+    lower_bound = Q1 - iqr * 1.5
+    upper_bound = Q3 + iqr * 1.5
+    
+    if lower_bound < 0:
+        lower_bound = 0
+    
+    print(f'정상치 범위: {lower_bound} ~ {upper_bound}')
+    
+정규화 (Nomalization)
 
+    값의 범위를 0~1 사이로 변환시켜 모든 컬럼의 데이터가 평등해진다. 서로 다른 단위의 값은 비교 대상이 될 수 없다.      예를 들어, 80kg과 180cm는 비교할 수 없기 때문에 정규화를 사용해서 비교한다.
 
+- 정규화 
 
+        from sklearn.preprocessing import MinMaxScaler
+    
+        normalization = MinMaxScaler()
+        rfm_normalization = normalization.fit_transform(cp_rfm_df)
+        rfm_normalization
+
+- 정규화된 코드 데이터프레임으로 변경
   
+        cp_rfm_norm_df = pd.DataFrame(rfm_normalization, columns=cp_rfm_df.columns)
+        cp_rfm_norm_df
+
+#### 📝 rfm 실슴
+
+- 쇼핑 csv파일 읽어오기
+
+        import pandas as pd 
+        
+        cs_df = pd.read_csv('./datasets/customer_shopping_data.csv')
+        cs_df
+
+<img width="824" height="367" alt="스크린샷 2025-11-15 오후 9 02 36" src="https://github.com/user-attachments/assets/b293a76b-8e82-40e3-995c-005cf8eeba1c" />
+
+- DataFrame rfm 시각화
+
+* 회원 등급 수
+
+<img width="589" height="455" alt="image" src="https://github.com/user-attachments/assets/cc0d41f1-15cf-4009-a833-e9b28c77f3fb" />
+
+* 쇼핑몰의 거래 수
+
+<img width="1028" height="398" alt="스크린샷 2025-11-15 오후 9 06 11" src="https://github.com/user-attachments/assets/1b659d12-6786-41d7-a962-2ed931786fc7" />
+
+* 성별에 따른 등급 수 
+
+<img width="1040" height="438" alt="스크린샷 2025-11-15 오후 9 06 30" src="https://github.com/user-attachments/assets/c2bf8432-c7aa-448a-923b-58024623dcf8" />
+
+
+#### 마케팅 전략
+
+- 등급 마케팅
+
+        등급(Bronze, Silver, Gold, VIP, VVIP)을 만들었을 때 중 Gold 등급과 VIP등급이 비중이 높다. 등급들을 지정하고 등급별로 이벤트들을 준비해서 고객들의 만족도를 높여 고객들을 유지해야 한다.
+
+- 집중 쇼핑몰 마케팅
+
+        kanyon, mall of istanbul 두개의 쇼핑몰이 거래 수가 많아서 집중인 타켓 마케팅을 할 필요가 있다. 다른 쇼핑몰들은 이벤트나 프로모션을 준비해 고객들이 더 많이 찾아올 수 있도록 마케팅 전략을 가져가야 한다.
+
+- 여성타겟 마케팅
+
+        전체적으로 여성 회원들이 쇼핑몰을 자주 방문하고 등급이 올라갈 수록 여성이 많은 것을 봐서 여성 회원들을 집중적으로 마케팅을 할 필요가 있다.
+
+
+
+
+
+
+
+
+
+
+
+
