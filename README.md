@@ -262,8 +262,74 @@ argsort()
 
 판다스 구성요소 
 
-- DataFrame: 행과 열로 구성된 2차우너 Dataset을 의미한다.
-- Series: 1개의 열로만 구성된 
+    - DataFrame: 행과 열로 구성된 2차우너 Dataset을 의미한다.
+    - Series: 1개의 열로만 구성된 열벡터 Dataset을 의미한다.
+    - Index: DataFrame과 Series에서 중복없는 행 번호를 의미한다.
+
+DataFrame()
+
+    - dict를 DataFrame으로 변환하고자 할 때 DataFrame 생성자에 전달한다.
+    - 컬럼명을 추가하거나 인덱스명을 변경하는 등 다양하게 설정할 수 있다.
+
+drop
+
+    - 기존 인덱스 삭제 여부
+
+inplace
+
+    - 원본 DataFrame에 적용 여부 
+
+read_csv() 
+
+    - csv 파일을 DataFrame으로 읽어 온다.
+
+head()
+
+    - 전체 데이터 중 앞부분 일부를 가져온다.
+
+tail()
+
+    - 전체 데이터 주 뒷부분 일부를 가져온다.
+
+iloc[], loc[]
+
+    - 원하는 행 또는 열을 가져온다.
+    - iloc은 인덱스 번호를 가져오고, loc은 인덱스 값 또는 컬럼명으로 가져온다.
+    
+    print(happiness_df.iloc[0])
+    print(happiness_df.loc[1])
+
+    # 한 개의 feature를 가져오면 Series이다.
+    # to_frame()을 사용하면 다시 Dataframe으로 변경된다.
+    print(happiness_df.iloc[:, -1])
+    print(type(happiness_df.iloc[:, -1].to_frame()))
+    
+    print(happiness_df.loc[:, 'income'])
+    print(type(happiness_df.loc[:, 'income'].to_frame()))
+    
+    # 대괄호로 가져올 때에는 두 번 써서 Dataframe으로 가져올 수 있다.
+    print(happiness_df['income'])
+    print(type(happiness_df[['income']]))
+
+describe()
+
+    - 숫자형 데이터의 개수, 평균, 표준편차, 최솟값, 사분위 분포도(중앙값:50%), 최댓값을 제공한다.
+    - 25번째 백분위수와 75번째 백분위수를 기준으로 정상치의 범위를 설정할 수 있디.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
