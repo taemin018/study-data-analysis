@@ -316,11 +316,38 @@ describe()
     - 숫자형 데이터의 개수, 평균, 표준편차, 최솟값, 사분위 분포도(중앙값:50%), 최댓값을 제공한다.
     - 25번째 백분위수와 75번째 백분위수를 기준으로 정상치의 범위를 설정할 수 있디.
 
+#### 📝 실습
 
+    import pandas as pd
+    
+    happiness_df = pd.read_csv('./datasets/happiness_report_2023.csv')
+    display(happiness_df)
 
+<img width="983" height="626" alt="스크린샷 2025-11-15 오후 8 25 47" src="https://github.com/user-attachments/assets/340aedaa-e43a-4625-9041-d927aca46c76" />
 
+    - 행복지수 csv파일을 불러와서 그래프를 시각화해서 데이터 분석하기
 
+그래프 시각화
 
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    
+    plt.scatter(x=happiness_df.gdp_per_capita, y=happiness_df.happiness_score)
+    plt.xlabel('GDP')
+    plt.ylabel('happiness_score')
+    plt.show()
+
+<img width="554" height="432" alt="image" src="https://github.com/user-attachments/assets/f06df18a-9b51-46a8-8348-d35645f08d57" />
+
+#### 행복지수와 GDP 관계 그래프 해석 
+
+    gdp_per_capita(1인당 국내총생산(GDP)을 측정)에 따른 행복지수 그래프 x축은 gdp_per_capita(1인당 국내총생산(GDP), y축은 행복지수 점수
+    
+    GDP가 높을 수록 행복지수 점수가 높다.
+    GDP가 낮은 국가들(왼쪽 구간, 0 ~ 0.8)은 대체로 행복 점수가 3~5점 수준으로 낮다.
+    GDP가 중간 정도인 국가들(1.0 ~ 1.5)은 행복 점수가 5~6점 사이에서 분포한다.
+    GDP가 높은 국가들(1.8 이상)은 대부분 행복 점수가 7점 이상이다.
+    그래프가 우상향하는 것을 보면 경제 수준이 높은 나라일수록 국민들의 행복감이 높게 나타난다.
 
 
 
